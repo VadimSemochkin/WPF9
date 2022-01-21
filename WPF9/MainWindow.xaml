@@ -1,0 +1,71 @@
+﻿<Window x:Class="WPF9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF9"
+         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Style="{DynamicResource WindowStyle}">
+    <Window.CommandBindings>
+        <CommandBinding Command="Open" Executed="OpenExecuted"/>
+        <CommandBinding Command="Save" Executed="SaveExecuted"/>
+        <CommandBinding Command="Close" Executed="CloseExecuted"/>
+        <CommandBinding Command="local:MyCommands.TextBold" Executed="BoldExecuted"/>
+        <CommandBinding Command="local:MyCommands.TextItalic" Executed="ItalicExecuted"/>
+        <CommandBinding Command="local:MyCommands.TextUnderline" Executed="UnderlineExecuted"/>
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+        </Grid.RowDefinitions>
+        <Menu Margin="5" Padding="5" Style="{DynamicResource MainMenuStyle}">
+            <MenuItem Header="_Файл" Style="{DynamicResource MenuStyle}">
+                <MenuItem Header="_Открыть" Command="Open" Style="{DynamicResource MenuStyle}"/>
+                    <MenuItem Header="_Сохранить"  Command="Save" Style="{DynamicResource MenuStyle}"/>
+                    <Separator/>
+                    <MenuItem Header="_Закрыть"  Command="Close" Style="{DynamicResource MenuStyle}"/>
+                </MenuItem>
+            <MenuItem Header="_Вид" Style="{DynamicResource MenuStyle}"/>
+            <MenuItem Header="_Правка" Style="{DynamicResource MenuStyle}">
+                    <MenuItem Header="_Копировать" Command="Copy" Style="{DynamicResource MenuStyle}"/>
+                        <MenuItem Header="_Вставить"  Command="Paste" Style="{DynamicResource MenuStyle}"/>
+                </MenuItem>
+                <MenuItem Header="_Формат" Style="{DynamicResource MenuStyle}"/>
+                <MenuItem Header="_Справка" Style="{DynamicResource MenuStyle}"/>
+
+            </Menu>
+        <ToolBarTray Grid.Row="1" Style="{DynamicResource ToolBarTrayStyle}">
+            <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarStyle}">
+                    <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{StaticResource fonts}"  >
+
+                    </ComboBox>
+                    <ComboBox Margin="5" Padding="5" SelectedIndex="2" Width="50" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource sizes}" >
+
+                    </ComboBox>
+                </ToolBar>
+            <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarStyle}">
+                <Button x:Name="buttonBold" Width="40" Height="40" Content="B" Command="local:MyCommands.TextBold" FontSize="24" FontFamily="Arial Black" FontWeight="Bold" Style="{DynamicResource ButtonStyle}"/>
+                   <Separator/>
+                <Button x:Name="buttonItalic" Width="40" Height="40" Content="I" Command="local:MyCommands.TextItalic" FontSize="24" FontFamily="Arial Black" FontWeight="Bold" Style="{DynamicResource ButtonStyle}" />
+                    <Separator/>
+                <Button x:Name="buttonUnderline" Width="40" Height="40"  Content="U" Command="local:MyCommands.TextUnderline" FontSize="24" FontFamily="Arial Black" FontWeight="Bold" Style="{DynamicResource ButtonStyle}" />
+            </ToolBar>
+            <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarStyle}">
+                    <StackPanel VerticalAlignment="Center">
+                    <RadioButton x:Name="buttonBlack" Content="Черный" IsChecked="True"  Click="buttonBlack_Click" Style="{DynamicResource RadioButtonStyle}"/>
+                    <RadioButton x:Name="buttonRed"  Content="Красный" Click="buttonRed_Click"  Style="{DynamicResource RadioButtonStyle}" />
+                    </StackPanel>
+            </ToolBar>
+            <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarStyle}">
+                   <ComboBox x:Name="styleBox" Margin="5" Padding="5" Width="120"/>
+            </ToolBar>
+        </ToolBarTray>
+            <TextBox x:Name="textBox" Margin="5" Padding="5" Grid.Row="2" FontFamily="Arial" FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBoxStyle}">
+
+            </TextBox>
+        </Grid>
+</Window>
