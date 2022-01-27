@@ -36,7 +36,7 @@ namespace WPF9
         {
             int styleIndex = styleBox.SelectedIndex;
             Uri uri = new Uri("Light.xaml", UriKind.Relative);
-            if (styleIndex==1)
+            if (styleIndex == 1)
             {
                 uri = new Uri("Dark.xaml", UriKind.Relative);
             }

@@ -40,10 +40,10 @@
             </Menu>
         <ToolBarTray Grid.Row="1" Style="{DynamicResource ToolBarTrayStyle}">
             <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarStyle}">
-                    <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{StaticResource fonts}"  >
+                    <ComboBox x:Name="fonts"  Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{StaticResource fonts}"  >
 
                     </ComboBox>
-                    <ComboBox Margin="5" Padding="5" SelectedIndex="2" Width="50" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource sizes}" >
+                <ComboBox  x:Name="sizes" Margin="5" Padding="5" SelectedIndex="2" Width="50" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource sizes}" >
 
                     </ComboBox>
                 </ToolBar>
@@ -61,10 +61,10 @@
                     </StackPanel>
             </ToolBar>
             <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarStyle}">
-                   <ComboBox x:Name="styleBox" Margin="5" Padding="5" Width="120"/>
+                   <ComboBox x:Name="styleBox" Margin="5" Padding="5" Width="120" SelectedIndex="1" />
             </ToolBar>
         </ToolBarTray>
-            <TextBox x:Name="textBox" Margin="5" Padding="5" Grid.Row="2" FontFamily="Arial" FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBoxStyle}">
+        <TextBox x:Name="textBox" Margin="5" Padding="5" Grid.Row="2" FontFamily="{Binding ElementName=fonts, Path=SelectedItem}" FontSize="{Binding ElementName=sizes, Path=SelectedItem}" TextWrapping="Wrap" Style="{DynamicResource TextBoxStyle}">
 
             </TextBox>
         </Grid>
